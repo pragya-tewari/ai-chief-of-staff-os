@@ -1,0 +1,30 @@
+# The user's workspace is separate by default. The optional fixed inside path is
+# ignored here; see setup/install.md.
+/workspace/
+/chief-of-staff-workspace/
+
+# Local machine config (written by the installer)
+cos-os.yaml
+cos-os.local
+
+# Secret-bearing files — never commit these
+.env
+.env.*
+*.local
+secrets.*
+*.pem
+*.key
+
+# Local connection state / temporary imports
+connection-state.*
+*.transcript
+*.audio
+*.wav
+*.mp3
+*.m4a
+
+# Editor / OS artifacts
+.DS_Store
+.vscode/
+.idea/
+*.swp

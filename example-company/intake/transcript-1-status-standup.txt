@@ -1,0 +1,23 @@
+[Status standup — 14 Aug 2026]
+[Attendees: Sam (chief of staff), Ravi (content), Meera (client onboarding)]
+
+Sam: Quick standup. Ravi, where's the course content for the rollout.
+Ravi: Most modules are drafted. The production vendor still owes us the final
+six modules — the compliance track. Until those land, we can't call the rollout
+complete.
+Sam: When did they say.
+Ravi: They keep saying "next week." I don't fully believe it.
+Sam: And once their modules do land, you own assembling the client reporting
+pack — keep it on your list so it doesn't vanish behind the vendor mess.
+Ravi: It's on the list. Blocked until their content arrives, obviously.
+Meera: On client onboarding — setting up a new client is still taking about two
+and a half hours. The welcome sequence is the slow part. I've got a rewrite
+half-done but no time to finish it.
+Sam: Let's get that a due date so it doesn't drift. Meera, can you finish it this
+month?
+Meera: If nothing else lands on me, yes.
+Sam: Adoption — we're at about seventy percent of tasks going into the system.
+Climbing. I'll keep nudging.
+Ravi: One thing, the rollout. Are we still saying the committed date? Because if
+the vendor modules slip, that date is dead.
+Sam: Good flag. That's a founder conversation. I'll take it to Dana.

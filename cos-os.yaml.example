@@ -1,0 +1,19 @@
+# cos-os.yaml — copy this to cos-os.yaml and fill it in (the installer does this
+# for you). It connects the product folder (this repo) to your private workspace.
+# This file is git-ignored, so your local paths never get committed.
+
+spec_version: "0.1"
+
+# ABSOLUTE path to your private workspace folder (created during install).
+# Do not use ~ — YAML does not expand it. Use a full path like /Users/you/...
+# The default is a separate folder. With install.sh --inside, the only supported
+# in-repository location is this repository's git-ignored workspace/ directory.
+workspace_path: "/Users/you/chief-of-staff-workspace"
+
+# Which assistant you run this with. Picks the matching file in adapters/.
+assistant: "claude"        # claude | agents | generic
+
+# Your locale, so dates and numbers read the way you expect. The installer detects
+# this; change it if it guessed wrong.
+timezone: "Asia/Kolkata"
+date_format: "YYYY-MM-DD"

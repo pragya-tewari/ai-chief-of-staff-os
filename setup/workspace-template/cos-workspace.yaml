@@ -1,0 +1,8 @@
+# This file belongs to your workspace (not the product). It records the format
+# version your workspace was created under, so the doctor can check compatibility
+# even if you re-clone the product or move machines.
+
+workspace_version: "0.1"
+created_at: ""            # filled in by the installer
+last_migrated_at: ""
+product_compatibility: ">=0.1 <0.2"

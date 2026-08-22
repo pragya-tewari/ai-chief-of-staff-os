@@ -1,0 +1,28 @@
+[Founder strategy call — 16 Aug 2026]
+[Attendees: Sam (chief of staff), Dana (CEO), Ravi (content)]
+
+Dana: So where are we on the client rollout. I promised them the committed date.
+Sam: That's the thing. The "committed date" has been meaning two different
+things. There's the executive showcase — a polished walkthrough for their
+leadership — and there's the full rollout to all their employees. We've been
+building as if those are the same date.
+Dana: They're not the same.
+Sam: They're not. The showcase we can do on the committed date. The full rollout,
+with the vendor's compliance modules still open, can't be real by then.
+Dana: How many of their employees are we even rolling out to. Was it four hundred
+something?
+Sam: I'd have to confirm the number, I don't want to give you a wrong one.
+Dana: Fine. So what do you want.
+Sam: Move the full rollout to October. Keep the executive showcase on the
+committed date so the client sees progress. That un-conflates the two and stops
+the team building to a phantom date.
+Dana: Okay. Do that. Full rollout moves to October.
+Ravi: I'll need the vendor's content scope closed for that. I can send them a
+revised scope by the twenty-sixth.
+Sam: Good. I'll draft the October rollout comms so we're ready.
+Dana: One more — should we bring in a second production vendor as backup? I'm
+nervous about single-sourcing this.
+Ravi: I have thoughts on that, it's not simple.
+Sam: Let's not decide that on the fly. I'll bring both sides to the next strategy
+slot.
+Dana: Fine.
