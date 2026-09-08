@@ -1,155 +1,296 @@
 # AI Chief of Staff OS
 
-**A local-first operating system for organisational coordination — the chief-of-staff job, run through an AI assistant.**
+**An open-source operating system that helps chiefs of staff manage meetings,
+decisions, tasks, projects and follow-ups through an AI assistant.**
 
-It is plain Markdown, start to finish: rules the assistant follows, recipes for
-the work you do every week, and a filing system for what it learns. You can open
-any file and read it. The project itself has no app, server, account or database
-(your AI provider and any tools you connect are separate — see Limitations).
+[![checks](https://github.com/pragya-tewari/ai-chief-of-staff-os/actions/workflows/checks.yml/badge.svg)](https://github.com/pragya-tewari/ai-chief-of-staff-os/actions/workflows/checks.yml)
+[![licence: MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
 
-Most "AI chief of staff" projects manage *your* inbox and *your* day. This one
-helps you **track, coordinate and follow up on work across the organisation** —
-who owes what, what the founder needs to see, whether the team is using the
-system — and it never touches another person's screen without your say-so. That
-last part is the point.
+The hardest part of chief-of-staff work is rarely one task. It is holding the
+context across many different kinds of work and knowing what needs attention
+next.
 
----
+In the same week, you may be tracking a founder decision, checking a delayed
+project, preparing for a difficult conversation, following up after meetings,
+reviewing hiring needs and writing an update for leadership. The notes may be in
+a document, the task in a project tool, the decision in a chat and the history
+in your head.
 
-## What makes it different
+AI Chief of Staff OS gives your AI assistant a clear way to work across that
+context. It helps turn meetings into actions, keep decisions and commitments on
+record, review projects and prepare updates without starting from a blank prompt
+every time.
 
-- **It coordinates work across the org, not your inbox.** Portfolio governance,
-  meetings into decisions and tasks, reporting up, demand management, spend
-  against plan, people moves.
-- **Nothing is sent to a person or an external tool without your yes.** Writing
-  into your own notes is free; anything that reaches another person or another
-  tool always asks first. (Your workspace content is processed by whichever AI
-  provider you run this with — see Limitations.)
-- **It gets better because you correct it.** Every correction is captured, and
-  the ones you repeat become rules.
+It is built for the coordination side of the role across the organisation. It
+is not an inbox assistant, a shared team platform or a replacement for a chief
+of staff.
 
----
+## What the OS actually is
 
-## How it works, in one picture
+The repository is made of Markdown files. You can open every rule, workflow and
+template and see what the AI has been told to do.
 
-```
-something happens          →  a meeting, an email, a request
-   → the assistant READS the rules and only the files it needs
-   → it runs a JOB           (a recipe for this kind of work)
-   → it reads and files into your WORKSPACE   (your private memory)
-   → it shows you a PLAN and waits for your YES on anything external
-   → it creates/updates a RUN RECEIPT before real writes
-   → it writes to your TOOLS  (task tool, chat, docs) only after the yes
-   → it checkpoints each action; uncertain external results are verified before retry
-```
+There is no app, server, account or database in this project. To use it, you
+need:
 
-See [docs/architecture.md](docs/architecture.md) for the one-page version, and
-[docs/how-it-compounds.md](docs/how-it-compounds.md) for why it gets sharper
-with use.
+- an AI assistant that can work with files on your computer, such as Claude
+  Code or an assistant that reads `AGENTS.md`; or
+- a capable chat assistant where you can paste the generic instructions and
+  attach the files it needs.
 
----
+Connections to task, chat, mail, document and calendar tools are optional; the
+workspace and built-in task list work without them.
 
-## The two folders
+See [supported assistants](docs/supported-assistants.md) for
+the current support status.
 
-The safest default keeps the product and your content side by side:
+## Start with the sample company
 
-```
-ai-chief-of-staff-os/          this repo — the system. You pull updates to it.
-chief-of-staff-workspace/      your private data. A separate folder by default.
+Clone the repository and run the installer:
+
+```bash
+git clone https://github.com/pragya-tewari/ai-chief-of-staff-os.git
+cd ai-chief-of-staff-os
+bash setup/install.sh
 ```
 
-That separation lets you take updates without a merge conflict on your notes and
-keeps company internals out of a public fork. The installer also offers a weaker
-`--inside` option at the fixed, git-ignored `product/workspace` path; see the
-limitations in [setup/install.md](setup/install.md) before choosing it.
+The installer asks where your private workspace should live, which assistant
+you use and your timezone. It creates the workspace, connects it to the product
+folder and checks that the setup is healthy.
 
----
+Before adding your own work, try the OS with the fictional sample company:
 
-## Install in five minutes
+```bash
+bash setup/demo.sh
+```
 
-1. Clone this repo:
+The demo creates an isolated copy of Northwind Learning and gives you the exact
+prompt to run. It does not replace your own workspace or use real company
+information.
 
-   ```
-   git clone https://github.com/pragya-tewari/ai-chief-of-staff-os.git
-   ```
+After the demo, follow the [first-week guide](setup/first-week.md)
+to set up your profile, priorities and working preferences.
 
-2. Run the installer — see [setup/install.md](setup/install.md). It creates and
-   verifies your workspace (separate from the repo by default).
-3. Try it on the sample company before you touch your own data —
-   see [setup/first-week.md](setup/first-week.md).
+Full installation details are in the
+[setup guide](setup/install.md).
 
----
+## The two-folder setup
 
-## The jobs
+The reusable OS and your private work live in separate folders:
 
-Each job is a folder in [jobs/](jobs/). One recipe, one worked example, one test.
+```text
+ai-chief-of-staff-os/          the public product: rules, workflows and templates
+chief-of-staff-workspace/      your private workspace: projects, people, meetings and decisions
+```
 
-| Job | What it does |
+The product folder can receive public updates without touching your company
+files. Your workspace holds the context that should never be included in a
+public fork.
+
+The installer offers an `--inside` option for people who prefer one folder. It
+uses a fixed, git-ignored `workspace/` path, but the separate-folder setup gives
+stronger protection against publishing private material by mistake.
+
+## How a workflow runs
+
+The repository calls each repeatable workflow a **job**. A job is a written
+procedure for one kind of chief-of-staff work.
+
+Every job follows the same basic loop:
+
+1. Read the relevant rules and only the context needed for this request.
+2. Check whether the same input was already processed.
+3. Run the workflow and find the correct home for each result.
+4. Show you the proposed external or sensitive actions.
+5. Carry out only the actions you approve.
+6. Verify the result and record what happened.
+
+The same loop, as a picture:
+
+```mermaid
+flowchart TD
+    A["Something happens<br/>a meeting, an email, a request"] --> B["Read the rules,<br/>then only the files this job needs"]
+    B --> C["Check whether this input<br/>was already processed"]
+    C --> D["Run the job and find<br/>the right home for each result"]
+    D --> E["Show you the plan"]
+    E -->|"your own notes and task list"| F["Write – no approval needed"]
+    E -->|"another person, a tool,<br/>or sensitive material"| G{"Your yes?"}
+    G -->|yes| H["Carry it out,<br/>with a run receipt"]
+    G -->|no| I["Nothing sent"]
+    F --> J["Verify and record<br/>what happened"]
+    H --> J
+```
+
+Each job includes:
+
+- when to run it;
+- a step-by-step method;
+- where each output belongs;
+- what needs approval;
+- a worked example; and
+- a test showing what a correct result must include.
+
+This means you are running the same procedure each time instead of rebuilding
+the prompt from memory.
+
+## The 14 workflows
+
+### Meetings and decisions
+
+| Workflow | What it does |
 |---|---|
-| [meeting-to-tasks](jobs/meeting-to-tasks/how-to-do-it.md) | Transcript in, decisions and tasks out, filed and routed |
-| [prepare-a-meeting](jobs/prepare-a-meeting/how-to-do-it.md) | The pack before any meeting: what changed, what's owed, what to raise |
-| [manage-a-decision](jobs/manage-a-decision/how-to-do-it.md) | Frame it, align on it, record it, revisit it |
-| [write-an-update](jobs/write-an-update/how-to-do-it.md) | One set of facts, calibrated for team, leads, founder, board or company |
-| [run-a-sweep](jobs/run-a-sweep/how-to-do-it.md) | Open loops, task quality, risks, workload — across the whole portfolio |
-| [intake-a-request](jobs/intake-a-request/how-to-do-it.md) | Someone asks for something: capture, decide, and write the no well |
-| [goals-and-numbers](jobs/goals-and-numbers/how-to-do-it.md) | Set quarterly goals, track them, assemble the numbers against them |
-| [spend-check](jobs/spend-check/how-to-do-it.md) | Where plan and money drifted apart, and what recurring spend runs quietly |
-| [people-moves](jobs/people-moves/how-to-do-it.md) | Someone joins, leaves or changes role |
-| [capacity-and-headcount](jobs/capacity-and-headcount/how-to-do-it.md) | Who we have, who we need, what it costs |
-| [protect-the-calendar](jobs/protect-the-calendar/how-to-do-it.md) | Where the leader's time went against stated priorities |
-| [draft-a-message](jobs/draft-a-message/how-to-do-it.md) | Stakeholder communication in your voice, risk read before sending |
-| [post-mortem](jobs/post-mortem/how-to-do-it.md) | After a miss: what happened, why, what changes, who owns it |
-| [review-the-system](jobs/review-the-system/how-to-do-it.md) | Weekly: what's mis-filed, stale, unowned, and what you corrected |
+| [meeting-to-tasks](jobs/meeting-to-tasks/how-to-do-it.md) | Turns a transcript into decisions, tasks, risks and open questions, then files each item in the right place |
+| [prepare-a-meeting](jobs/prepare-a-meeting/how-to-do-it.md) | Builds a preparation pack from current decisions, commitments, risks and changes |
+| [manage-a-decision](jobs/manage-a-decision/how-to-do-it.md) | Frames a decision, records what was agreed and keeps the reasoning available for later review |
 
-All fourteen ship in v0.1.0. The changelog records what each release adds —
-see [CHANGELOG.md](CHANGELOG.md).
+### Projects, requests and reporting
 
----
+| Workflow | What it does |
+|---|---|
+| [write-an-update](jobs/write-an-update/how-to-do-it.md) | Uses one set of facts to prepare an update for a team, founder, board or company |
+| [run-a-sweep](jobs/run-a-sweep/how-to-do-it.md) | Reviews open loops, task quality, risks, dependencies and workload across the portfolio |
+| [intake-a-request](jobs/intake-a-request/how-to-do-it.md) | Captures a request, decides whether to do, defer or decline it, and drafts the reply |
 
-## An honest limit
+### Goals, money and capacity
 
-The built-in task list is *your* record of what you're owed and what you
-promised. It is not a shared team board — nobody else updates it and it notifies
-no one. If your team lives in Asana or Linear, connect that instead and the
-built-in list steps aside. Only one task source is ever live at a time. See
-[connections/built-in-tasks.md](connections/built-in-tasks.md).
+| Workflow | What it does |
+|---|---|
+| [goals-and-numbers](jobs/goals-and-numbers/how-to-do-it.md) | Sets and reviews goals, then assembles the numbers needed to assess progress |
+| [spend-check](jobs/spend-check/how-to-do-it.md) | Compares planned and actual spend and finds recurring costs that need attention |
+| [capacity-and-headcount](jobs/capacity-and-headcount/how-to-do-it.md) | Reports current capacity, hiring needs and what they cost, so the hiring call stays yours |
+| [protect-the-calendar](jobs/protect-the-calendar/how-to-do-it.md) | Compares where leadership time went with the priorities it was meant to support |
 
----
+### People, communication and learning
 
-## Limitations (read these)
+| Workflow | What it does |
+|---|---|
+| [people-moves](jobs/people-moves/how-to-do-it.md) | Handles the operating work when someone joins, leaves or changes role |
+| [draft-a-message](jobs/draft-a-message/how-to-do-it.md) | Drafts stakeholder communication in your voice and checks the risk before sending |
+| [post-mortem](jobs/post-mortem/how-to-do-it.md) | Records what happened after a miss or incident and turns the learning into owned changes |
+| [review-the-system](jobs/review-the-system/how-to-do-it.md) | Finds stale, missing, duplicated or misplaced information and proposes repairs |
 
-Honest about what v0.1 is and isn't:
+You can change these workflows or add your own. The
+[jobs guide](jobs/README.md) explains the shared structure.
 
-- **One primary user.** No concurrency, no multi-agent locking, no atomic
-  transactions. Run one assistant session at a time.
-- **Rerun protection is procedural, not exactly-once infrastructure.** Stable
-  run keys and per-action receipts reconcile interrupted work, but an uncertain
-  external action must be checked in its tool or escalated to you before retry.
-- **Exactly one live task source.** The built-in list *or* one external tool,
-  never both — the other is frozen history.
-- **The built-in task list is your own record**, not a shared team board. Nobody
-  else updates it and it notifies no one.
-- **No background execution or reminders** unless your assistant/runtime provides
-  them. Jobs run when you run them.
-- **The rules are behavioural instructions, not enforced permissions.** They
-  reduce risk; they are not a hard security boundary. See [SECURITY.md](SECURITY.md).
-- **Cloud-model privacy depends on your provider.** Workspace content you have the
-  assistant read is processed by your AI provider under your account's settings —
-  retention, training and region are outside this project's control. "No account"
-  means *this project* has no server or account; your AI provider and external
-  tools may still require one.
-- **Large workspaces** may exceed the model's context; scope what a job reads.
-- **Supported installer platforms:** macOS and Linux. On Windows, use WSL or a
-  compatible Bash environment; native PowerShell installation is not shipped in
-  v0.1.
+## Where your information goes
 
-These are acceptable v0.1 limitations. They're listed so the system looks as
-trustworthy as it is.
+The workspace separates evidence, current state and views:
 
----
+- **Evidence** records what happened: meeting notes, messages and source
+  references.
+- **Current state** records what is true now: projects, tasks, decisions, goals
+  and people context.
+- **Views** assemble information for a purpose: a meeting brief, founder update
+  or list of commitments.
+
+Each fact has one main home. A report can pull from that source, but it should
+not become a second copy that slowly drifts out of date. Stable IDs link related
+items across files.
+
+The filing rules are documented in
+[where things live](rules/where-things-live.md).
+
+## What the AI can do without asking
+
+Inside your ordinary workspace, the AI can read relevant files, organise
+information, update your built-in task list and draft reports. These are records
+you own and control.
+
+It asks before:
+
+- recording a decision as settled;
+- reading or writing private and sensitive material;
+- changing the rules or your saved preferences;
+- creating or updating anything in an external tool; or
+- sending, publishing or showing something to another person.
+
+Sending external email, changing a task owner, editing financial figures,
+deleting information, bulk-changing more than ten items and comparing named
+people require a direct instruction from you.
+
+The full policy is in
+[what needs my approval](rules/what-needs-my-approval.md).
+
+## How the system remembers and learns
+
+The OS improves by keeping structured history instead of relying on one chat
+thread:
+
+- meeting records preserve decisions and commitments;
+- project files preserve the reasoning behind changes;
+- people files hold the working context needed to prepare conversations;
+- corrections record what the AI got wrong; and
+- approved repeated preferences become standing rules for later sessions.
+
+The learning process never allows the AI to rewrite its own rules silently. It
+proposes a change and waits for your approval.
+
+See [how it compounds](docs/how-it-compounds.md) and
+[how the AI learns](rules/how-you-learn.md).
+
+## External tools and the built-in task list
+
+The OS includes a local task list for your own commitments and follow-ups. It is
+not a shared project board: nobody else updates it and it sends no reminders.
+
+If your team uses Asana, Linear, Jira or another task tool, you can make that the
+active task source instead. Only one task source should be active at a time.
+The local list and an external board must not both claim to be current.
+
+The repository includes connection guides for common tool categories. They
+describe the expected actions and approval checks. They are not built-in
+integrations. A connection works only when your AI runtime can access the tool
+and you have configured it.
+
+Start with [connection roles](connections/roles.md) and the
+[built-in task list](connections/built-in-tasks.md).
+
+## Technical structure
+
+```text
+ai-chief-of-staff-os/
+├── rules/               behaviour, filing, approval and learning rules
+├── jobs/                the 14 repeatable workflows
+├── schemas/             shared formats for tasks, registers and run receipts
+├── adapters/            instructions for different AI assistants
+├── connections/         capability and tool-connection guides
+├── setup/               installer, doctor, demo and workspace template
+├── example-company/     fictional data for trying and testing the OS
+├── docs/                architecture, support status, FAQ and threat model
+├── CLAUDE.md            entry instructions for Claude Code
+└── AGENTS.md            entry instructions for assistants that read AGENTS.md
+```
+
+For more detail, read the
+[architecture](docs/architecture.md),
+[security policy](SECURITY.md) and
+[threat model](docs/threat-model.md).
+
+## Limitations in v0.1
+
+- The system is designed for one primary user and one active AI session at a
+  time. It does not include multi-user or multi-agent locking.
+- Jobs run when you start them. There is no background execution or reminder
+  service unless your AI runtime provides one.
+- Run receipts reduce duplicate actions after interruptions, but they do not
+  provide database transactions or an exactly-once guarantee.
+- The rules are instructions for the model, not enforced software permissions.
+- Content read by a cloud AI provider is handled under that provider's account,
+  retention, training and regional settings.
+- Large workspaces may exceed an AI model's context. Jobs should read only the
+  files they need.
+- The installer supports macOS and Linux. Windows users need WSL or a compatible
+  Bash environment.
+
+## Contributing
+
+The system is MIT licensed, readable and editable. You can change it for your
+own work or contribute improvements to the public repository.
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a
+pull request. Security and privacy issues should follow the private reporting
+process in [SECURITY.md](SECURITY.md).
 
 ## Who made this
 
-Built and maintained by Pragya Tewari. Contributions welcome — see
-[CONTRIBUTING.md](CONTRIBUTING.md). Security reports: [SECURITY.md](SECURITY.md).
-
-MIT licensed.
+Built and maintained by Pragya Tewari.
