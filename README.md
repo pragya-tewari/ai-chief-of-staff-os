@@ -66,7 +66,12 @@ limitations in [setup/install.md](setup/install.md) before choosing it.
 
 ## Install in five minutes
 
-1. Clone this repo.
+1. Clone this repo:
+
+   ```
+   git clone https://github.com/pragya-tewari/ai-chief-of-staff-os.git
+   ```
+
 2. Run the installer — see [setup/install.md](setup/install.md). It creates and
    verifies your workspace (separate from the repo by default).
 3. Try it on the sample company before you touch your own data —

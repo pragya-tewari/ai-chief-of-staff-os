@@ -47,6 +47,10 @@ other free writes (step 8) — not as a special early write ahead of the plan.
 For each extracted item decide: new, already recorded, recorded-but-now-stale, or
 already done.
 
+Check the places that may already mention this meeting as pending — the project
+index and `now.md` — and include their one-line updates in the write plan, so no
+file is left calling the meeting unprocessed after the run.
+
 A later meeting does **not** automatically win. Weigh who said it, whether it was
 settled or just floated, the decision authority, and the effective date. If a
 later meeting seems to reverse an earlier decision, surface it as a question —

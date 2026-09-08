@@ -324,8 +324,11 @@ def validate_sample(targets: set[Path]) -> None:
     for name in required_workspace:
         if not (sample / name).is_file():
             fail(f"sample workspace missing required file: {name}")
-    for directory in [sample] + sorted(p for p in sample.rglob("*") if p.is_dir()):
-        if not any(child.is_file() for child in directory.iterdir()):
+    def hidden(path):
+        return any(part.startswith(".") for part in path.relative_to(sample).parts)
+
+    for directory in [sample] + sorted(p for p in sample.rglob("*") if p.is_dir() and not hidden(p)):
+        if not any(child.is_file() and not hidden(child) for child in directory.iterdir()):
             continue
         if directory == sample:
             index = directory / "README.md"
@@ -337,7 +340,7 @@ def validate_sample(targets: set[Path]) -> None:
             fail(f"sample folder has no README/index: {directory.relative_to(ROOT)}")
 
     for path in sample.rglob("*"):
-        if not path.is_file() or path.name in {"README.md", "index.md"}:
+        if not path.is_file() or hidden(path) or path.name in {"README.md", "index.md"}:
             continue
         if path.resolve() not in targets:
             fail(f"sample file is not linked from an index: {path.relative_to(ROOT)}")
@@ -358,7 +361,7 @@ def validate_sample(targets: set[Path]) -> None:
     prep = (ROOT / "jobs/prepare-a-meeting/example.md").read_text(encoding="utf-8")
     if "one-to-one first" in prep:
         fail("prepare-a-meeting example leaks a private observation")
-    for identifier in ("T23", "T24", "Q8", "M4"):
+    for identifier in ("T23", "T24", "Q8", "U4", "M4"):
         for path in sample.rglob("*.md"):
             if path.name == "EXPECTED-STATE.md":
                 continue

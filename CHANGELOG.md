@@ -11,9 +11,9 @@ it.
 
 - Nothing yet.
 
-## [0.1.0] — 2026-08-23
+## [0.1.0] — 2026-09-09
 
-First public-ready build.
+First public release.
 
 ### Added
 - Core rules: how-to-work, approvals, where-things-live, how-you-learn, safety.
@@ -36,6 +36,17 @@ First public-ready build.
   git-history checks, sample references and sample index coverage.
 - GitHub issue and pull-request templates; SECURITY, CODE_OF_CONDUCT, CONTRIBUTING,
   RELEASING.
+
+### Fixed
+- Repository checks ignore OS dotfiles (`.DS_Store`) in the sample tree instead
+  of reporting them as unindexed sample files.
+- Run-key rule now states that a file component drops its extension, matching
+  every shipped receipt and example.
+- `meeting-to-tasks` reconciles the project index and `now.md` when they still
+  name the meeting as pending, and files an unanswered factual question to
+  `registers/uncertain.md`. The sample oracle and worked example list these
+  outputs, plus the already-overdue T23 behaviour, so a faithful run matches.
+- README and install guide give the clone URL.
 
 ### Known limitations
 - Single primary user; no concurrency, transactions, or background execution.

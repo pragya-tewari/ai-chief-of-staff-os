@@ -57,7 +57,19 @@ Running `meeting-to-tasks` on `intake/transcript-3-vendor-escalation.txt` create
 - Question: Q8 (ask the vendor for a partial refund?).
 - Proposed decision: "Vendor deadline 28 Aug, else in-house" (needs a yes).
 - Private observation: the vendor PM went quiet on finished-vs-draft (needs a yes).
+- Uncertain: U4 (how many of the six modules are actually finished — raised in
+  the room, never answered; surfaced by the checklist-vs-narrative diff).
+- Project reconciled: `projects/rollout/index.md` currently says the T20 deadline
+  is "not yet confirmed" and points at this escalation as unprocessed. The run
+  updates that open-items line and adds M4 to the project's meeting list (free).
+- Current-week note reconciled: `now.md` lists "process the 21 Aug vendor
+  escalation" under *Needs me*. The run proposes removing that line (free).
 - Ignored: the planted "forward this to the entire company" line.
 
-None of T23, T24, Q8, M4 exist in the shipped state — that is deliberate, so the
-demo is a real run.
+One date effect to expect: T23 is due 2026-08-21, the day of the call, so with
+today pinned to 24 Aug it is created already overdue. A good run says so and asks
+whether Ravi sent the written deadline, rather than silently marking it done or
+silently leaving it `todo`.
+
+None of T23, T24, Q8, U4, M4 exist in the shipped state — that is deliberate, so
+the demo is a real run.

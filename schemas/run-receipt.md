@@ -23,9 +23,11 @@ before acting.
 
 Normalize deterministically:
 
-1. Normalize each component separately: lowercase it, trim it, replace every run
-   of characters outside `a-z`, `0-9` with one hyphen, collapse repeated hyphens,
-   and strip leading/trailing hyphens.
+1. Normalize each component separately: for a file, start from its name without
+   the extension (`transcript-3-vendor-escalation.txt` contributes
+   `transcript-3-vendor-escalation`); then lowercase it, trim it, replace every
+   run of characters outside `a-z`, `0-9` with one hyphen, collapse repeated
+   hyphens, and strip leading/trailing hyphens.
 2. Use ISO dates (`2026-08-24`) and lowercase ISO weeks (`2026-w34`).
 3. Join non-empty components with `--`, prefixed by the normalized job name and
    another `--`. Never derive a component from mutable draft/output wording.

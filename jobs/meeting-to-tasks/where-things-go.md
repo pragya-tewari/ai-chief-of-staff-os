@@ -11,6 +11,7 @@
 | Tasks, when an external tool is live | the external tool | **yes** |
 | Telling anyone about their task | chat / mail | **yes** |
 | Project status change | `workspace/projects/<project>/` | no |
+| A line in the current-week note that this meeting settles or makes stale | `workspace/now.md` | no |
 | Open questions | `workspace/registers/questions.md` | no |
 | A decision record | `workspace/decisions/` | **yes** |
 | A message to the team | chat / mail | **yes** |

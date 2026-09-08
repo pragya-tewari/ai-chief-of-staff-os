@@ -7,6 +7,7 @@ reads:
   - people/
   - projects/
   - org/portfolio-map.md
+  - now.md
   - task-source
 writes-internal:
   - meetings/
@@ -15,6 +16,7 @@ writes-internal:
   - registers/questions.md
   - people/
   - projects/
+  - now.md
   - tasks
   - log/activity.md
   - log/runs/

@@ -16,7 +16,11 @@ You need:
 
 ## Steps
 
-1. **Clone this repo**, e.g. to `~/ai-chief-of-staff-os`.
+1. **Clone this repo**, e.g. to `~/ai-chief-of-staff-os`:
+
+   ```
+   git clone https://github.com/pragya-tewari/ai-chief-of-staff-os.git ~/ai-chief-of-staff-os
+   ```
 
 2. **Run the installer:**
 
