@@ -44,6 +44,45 @@ workspace and built-in task list work without them.
 See [supported assistants](docs/supported-assistants.md) for
 the current support status.
 
+## The 14 workflows
+
+### Meetings and decisions
+
+| Workflow | What it does |
+|---|---|
+| [meeting-to-tasks](jobs/meeting-to-tasks/how-to-do-it.md) | Turns a transcript into decisions, tasks, risks and open questions, then files each item in the right place |
+| [prepare-a-meeting](jobs/prepare-a-meeting/how-to-do-it.md) | Builds a preparation pack from current decisions, commitments, risks and changes |
+| [manage-a-decision](jobs/manage-a-decision/how-to-do-it.md) | Frames a decision, records what was agreed and keeps the reasoning available for later review |
+
+### Projects, requests and reporting
+
+| Workflow | What it does |
+|---|---|
+| [write-an-update](jobs/write-an-update/how-to-do-it.md) | Uses one set of facts to prepare an update for a team, founder, board or company |
+| [run-a-sweep](jobs/run-a-sweep/how-to-do-it.md) | Reviews open loops, task quality, risks, dependencies and workload across the portfolio |
+| [intake-a-request](jobs/intake-a-request/how-to-do-it.md) | Captures a request, decides whether to do, defer or decline it, and drafts the reply |
+
+### Goals, money and capacity
+
+| Workflow | What it does |
+|---|---|
+| [goals-and-numbers](jobs/goals-and-numbers/how-to-do-it.md) | Sets and reviews goals, then assembles the numbers needed to assess progress |
+| [spend-check](jobs/spend-check/how-to-do-it.md) | Compares planned and actual spend and finds recurring costs that need attention |
+| [capacity-and-headcount](jobs/capacity-and-headcount/how-to-do-it.md) | Reports current capacity, hiring needs and what they cost, so the hiring call stays yours |
+| [protect-the-calendar](jobs/protect-the-calendar/how-to-do-it.md) | Compares where leadership time went with the priorities it was meant to support |
+
+### People, communication and learning
+
+| Workflow | What it does |
+|---|---|
+| [people-moves](jobs/people-moves/how-to-do-it.md) | Handles the operating work when someone joins, leaves or changes role |
+| [draft-a-message](jobs/draft-a-message/how-to-do-it.md) | Drafts stakeholder communication in your voice and checks the risk before sending |
+| [post-mortem](jobs/post-mortem/how-to-do-it.md) | Records what happened after a miss or incident and turns the learning into owned changes |
+| [review-the-system](jobs/review-the-system/how-to-do-it.md) | Finds stale, missing, duplicated or misplaced information and proposes repairs |
+
+You can change these workflows or add your own. The
+[jobs guide](jobs/README.md) explains the shared structure.
+
 ## Start with the sample company
 
 Clone the repository and run the installer:
@@ -132,45 +171,6 @@ Each job includes:
 
 This means you are running the same procedure each time instead of rebuilding
 the prompt from memory.
-
-## The 14 workflows
-
-### Meetings and decisions
-
-| Workflow | What it does |
-|---|---|
-| [meeting-to-tasks](jobs/meeting-to-tasks/how-to-do-it.md) | Turns a transcript into decisions, tasks, risks and open questions, then files each item in the right place |
-| [prepare-a-meeting](jobs/prepare-a-meeting/how-to-do-it.md) | Builds a preparation pack from current decisions, commitments, risks and changes |
-| [manage-a-decision](jobs/manage-a-decision/how-to-do-it.md) | Frames a decision, records what was agreed and keeps the reasoning available for later review |
-
-### Projects, requests and reporting
-
-| Workflow | What it does |
-|---|---|
-| [write-an-update](jobs/write-an-update/how-to-do-it.md) | Uses one set of facts to prepare an update for a team, founder, board or company |
-| [run-a-sweep](jobs/run-a-sweep/how-to-do-it.md) | Reviews open loops, task quality, risks, dependencies and workload across the portfolio |
-| [intake-a-request](jobs/intake-a-request/how-to-do-it.md) | Captures a request, decides whether to do, defer or decline it, and drafts the reply |
-
-### Goals, money and capacity
-
-| Workflow | What it does |
-|---|---|
-| [goals-and-numbers](jobs/goals-and-numbers/how-to-do-it.md) | Sets and reviews goals, then assembles the numbers needed to assess progress |
-| [spend-check](jobs/spend-check/how-to-do-it.md) | Compares planned and actual spend and finds recurring costs that need attention |
-| [capacity-and-headcount](jobs/capacity-and-headcount/how-to-do-it.md) | Reports current capacity, hiring needs and what they cost, so the hiring call stays yours |
-| [protect-the-calendar](jobs/protect-the-calendar/how-to-do-it.md) | Compares where leadership time went with the priorities it was meant to support |
-
-### People, communication and learning
-
-| Workflow | What it does |
-|---|---|
-| [people-moves](jobs/people-moves/how-to-do-it.md) | Handles the operating work when someone joins, leaves or changes role |
-| [draft-a-message](jobs/draft-a-message/how-to-do-it.md) | Drafts stakeholder communication in your voice and checks the risk before sending |
-| [post-mortem](jobs/post-mortem/how-to-do-it.md) | Records what happened after a miss or incident and turns the learning into owned changes |
-| [review-the-system](jobs/review-the-system/how-to-do-it.md) | Finds stale, missing, duplicated or misplaced information and proposes repairs |
-
-You can change these workflows or add your own. The
-[jobs guide](jobs/README.md) explains the shared structure.
 
 ## Where your information goes
 
