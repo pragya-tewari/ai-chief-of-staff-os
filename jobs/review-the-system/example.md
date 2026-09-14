@@ -10,9 +10,10 @@ Using the sample company, end of a week.
 
 **System review — week of 24 Aug**
 
-*Health check* (`scripts/health-check.py`)
-- 0 broken links · 0 isolated · 0 dead ends · 1 stale · 0 nested repos ·
-  0 uncommitted.
+*Health check* (`scripts/health-check.py --workspace <sample> --as-of 2026-08-24`)
+- 0 broken or ambiguous links · 0 isolated · 0 dead ends · 0 unreachable ·
+  1 stale · 0 invalid review dates · 0 nested repos · 0 skipped symlinks ·
+  uncommitted n/a (sample is not its own repository). Scan complete.
 
 *Stale*
 - 1 person file past its 30-day review: Meera (per-meera), last confirmed 18 Jul.
