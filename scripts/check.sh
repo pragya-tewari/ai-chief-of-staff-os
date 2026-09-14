@@ -20,6 +20,7 @@ else
 fi
 
 section "workspace health-check smoke test"
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/test-health-check.py || FAIL=1
 if python3 scripts/health-check.py --workspace setup/workspace-template --strict; then
   ok "fresh workspace template is clean"
 else

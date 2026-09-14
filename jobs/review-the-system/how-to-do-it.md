@@ -16,12 +16,26 @@ same standing rule or candidate twice.
    read-only check from the product folder and read its output:
 
    ```bash
-   python3 scripts/health-check.py
+   python3 scripts/health-check.py --workspace "/absolute/path/to/selected-workspace"
    ```
+
+   Replace the path with the workspace selected for this run, including an
+   isolated demo workspace. Never substitute the configured real workspace for
+   a demo. For the fictional sample, also pass `--as-of 2026-08-24`.
 
    It reports broken links, isolated notes, dead ends (files nothing links to),
    entity files past their `review-by`, nested git repositories, and
-   uncommitted work. Then add the signals only a reader can see:
+   uncommitted work, and notes unreachable from folder READMEs or known root
+   entry notes. Folder READMEs are independent entry points; this is not a
+   guarantee that the whole graph is one connected component.
+   Private and ignored folders are excluded, and links into them are not
+   verified. Symlinks and nested repositories are reported without traversal.
+   The checker validates links to assets, but does not classify unlinked binary
+   files as disposable.
+
+   Exit 2 means the scan is incomplete: report the errors and never call it
+   clean. With `--strict`, findings return exit 1; without it, findings return
+   exit 0. Read the counts in either case. Then add the signals only a reader can see:
    - Registers with items sitting open too long.
    - Jobs that ran, and any that errored or half-finished.
    - Corrections captured this week.

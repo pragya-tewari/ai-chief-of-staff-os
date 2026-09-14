@@ -112,23 +112,26 @@ stale links.
 
 ## Ending a session
 
-Most hygiene debt does not come from broken rules. It comes from **work that
-ends without an ending** — a session whose deliverable went somewhere else (a
+Hygiene debt can come from **work that ends without an ending** — a session
+whose deliverable went somewhere else (a
 message sent, a file shared, a document handed over), so the session simply
 stopped. The files it left behind were by-products, not deliverables; nobody
 decided to keep them, so nobody did the keeping steps. They sit unlinked and
 uncommitted, and every later session correctly treats them as "not mine to
-touch". That is how a workspace grows a pile of orphans without anyone ever
-breaking a rule.
+touch". The original filing step was missed, and later sessions avoid changing
+work they do not own.
 
 An ending has three moves, in this order, and takes a few minutes:
 
 1. **Link.** Everything durable you created this session is reachable from its
    folder README (the same-session filing rule above). Assets count — images,
    exports, generated files — not just notes.
-2. **Record.** If the workspace is under git, commit what you changed with a
-   message that says what the session was. If something must stay uncommitted,
-   say which files and why, so the next session knows they are owned.
+2. **Record.** If the workspace has its own Git repository, review and commit
+   only this session's intended changes. Do not sweep unrelated or sensitive
+   files into the commit. A commit provides local history, not an off-device
+   backup; pushing requires the user's configured private destination and
+   approval. If something must stay uncommitted, record which files, why and
+   who owns the next step in the handoff.
 3. **Hand off.** Say plainly what changed, what is still open, and what the
    next session should pick up first. The learning report in
    [how-you-learn.md](how-you-learn.md#reporting-the-learning) is part of this.
@@ -138,8 +141,8 @@ three moves (interrupted, out of time), it says so — an honest "not closed" is
 recoverable; a silent stop is not.
 
 The safety net for sessions that stop anyway is [review-the-system](../jobs/review-the-system/),
-whose `scripts/health-check.py` lists unlinked and uncommitted files across the
-whole workspace and asks: is anyone still working on this, or did it end
+whose `scripts/health-check.py` checks ordinary workspace notes and Git state,
+with private and ignored folders excluded. It asks: is anyone still working on this, or did it end
 without an ending?
 
 ## Related

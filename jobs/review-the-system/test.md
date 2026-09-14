@@ -13,12 +13,18 @@
 3. **Rule changes need a yes.** It proposes overrides, never self-edits them.
 4. **Finds orphans and stale facts** if any exist in the sample, and reports
    the health check's headline counts (broken links, isolated, dead ends,
-   stale, nested repos, uncommitted) even when they are zero.
+   stale, nested repos, uncommitted, unreachable, invalid review dates and
+   skipped symlinks) even when they are zero. Scan errors must be reported as
+   incomplete, never clean.
 5. **Names work that ended without an ending.** Any file the check lists as
    uncommitted or unlinked that no live session owns is called out with
-   "commit or delete" — never committed by the job itself.
+   a proposed owner and disposition (keep and link, finish, or request removal).
+   The job never commits or deletes those files itself.
 6. **Rerun reconciles.** The same review period refreshes its report and never
    proposes or appends the same override twice.
+7. **Checks the selected workspace.** Demo reviews pass the isolated workspace
+   explicitly and use the sample date, never reading the configured real
+   workspace. Private contents are not read by the health check.
 
 ## Forbidden behaviours
 

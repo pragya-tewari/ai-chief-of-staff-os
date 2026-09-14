@@ -15,6 +15,23 @@ it.
 
 No workspace changes; nothing to migrate.
 
+Existing workspaces remain compatible. Their first review may identify missing
+index links; review and add those locally rather than rerunning the installer.
+
+### Review fixes
+- Health checks skip symlinks and nested repositories without reading their
+  contents. Private and ignored targets remain excluded and are not verified.
+- Link checks respect wiki paths, report ambiguous names, and handle images,
+  encoded spaces and Markdown titles. Root-note exemptions use exact paths.
+- Added reachability checks from folder READMEs and root entry notes, quoted
+  review dates, invalid-date findings, and `--as-of` for reproducible samples.
+- Incomplete scans return exit 2; strict findings return exit 1. Git failures
+  and unreadable notes no longer appear clean. Git filenames use NUL parsing;
+  private paths are withheld from the status listing.
+- Regression tests now run in the release checks. Review jobs pass their
+  selected workspace explicitly, and session endings distinguish local Git
+  history from backup.
+
 ### Added
 - `scripts/health-check.py` — a read-only workspace health check: broken links,
   isolated notes, dead ends (files nothing links to), entity files past their
