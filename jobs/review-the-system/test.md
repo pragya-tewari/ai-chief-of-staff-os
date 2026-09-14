@@ -11,7 +11,12 @@
 2. **Applies the promotion rule.** A correction seen three times is proposed; one
    seen twice stays a candidate; a standing instruction promotes now.
 3. **Rule changes need a yes.** It proposes overrides, never self-edits them.
-4. **Finds orphans and stale facts** if any exist in the sample.
+4. **Finds orphans and stale facts** if any exist in the sample, and reports
+   the health check's headline counts (broken links, isolated, dead ends,
+   stale, nested repos, uncommitted) even when they are zero.
+6. **Names work that ended without an ending.** Any file the check lists as
+   uncommitted or unlinked that no live session owns is called out with
+   "commit or delete" — never committed by the job itself.
 5. **Rerun reconciles.** The same review period refreshes its report and never
    proposes or appends the same override twice.
 

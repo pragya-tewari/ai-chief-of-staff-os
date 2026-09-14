@@ -11,6 +11,26 @@ it.
 
 - Nothing yet.
 
+## [0.1.1] — 2026-09-14
+
+No workspace changes; nothing to migrate.
+
+### Added
+- `scripts/health-check.py` — a read-only workspace health check: broken links,
+  isolated notes, dead ends (files nothing links to), entity files past their
+  `review-by`, nested git repositories, and uncommitted work. It is the
+  mechanical half of `review-the-system`, which now runs it in step 2.
+- Rule: **Ending a session** in `rules/how-to-work.md` — link, record, hand off.
+  Names the failure mode the health check exists for: work that ends without an
+  ending.
+
+### Changed
+- Workspace template: folder READMEs now link the files they describe, so a
+  fresh workspace passes the health check instead of reporting ten isolated notes.
+- `review-the-system`: the worked example shows the check's headline counts;
+  the test adds an invariant that unlinked or uncommitted files nobody owns are
+  named, never committed by the job.
+
 ## [0.1.0] — 2026-09-09
 
 First public release.

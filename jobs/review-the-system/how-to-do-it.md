@@ -12,12 +12,22 @@ same standing rule or candidate twice.
 
 1. **Read the week's logs** (`log/activity.md`, `log/corrections.md`, run
    receipts) and scan the workspace.
-2. **Check the health signals:**
-   - Facts past their `review-by` (stale).
-   - Files nothing links to (orphans).
+2. **Check the health signals.** Start with the mechanical ones — run the
+   read-only check from the product folder and read its output:
+
+   ```bash
+   python3 scripts/health-check.py
+   ```
+
+   It reports broken links, isolated notes, dead ends (files nothing links to),
+   entity files past their `review-by`, nested git repositories, and
+   uncommitted work. Then add the signals only a reader can see:
    - Registers with items sitting open too long.
    - Jobs that ran, and any that errored or half-finished.
    - Corrections captured this week.
+   - Work that ended without an ending: anything the check lists as
+     uncommitted or unlinked that no session is still working on (see
+     [Ending a session](../../rules/how-to-work.md#ending-a-session)).
 3. **Catch missed learning.** Any explicit correction in the logs that wasn't
    promoted gets the promotion rule applied — a standing instruction promotes now,
    a preference needs its third repeat.
