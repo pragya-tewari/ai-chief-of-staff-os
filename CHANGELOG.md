@@ -30,6 +30,10 @@ No workspace changes; nothing to migrate.
 - `review-the-system`: the worked example shows the check's headline counts;
   the test adds an invariant that unlinked or uncommitted files nobody owns are
   named, never committed by the job.
+- `scripts/check.sh` runs the health check on the workspace template as a smoke
+  test, so a template change that strands a file fails the repository checks.
+- `setup/install.sh` links `profile/about-me.md` from the profile README after
+  creating it, so a fresh install passes the health check clean.
 
 ## [0.1.0] — 2026-09-09
 
