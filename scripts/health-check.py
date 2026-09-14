@@ -20,7 +20,7 @@ What it reports:
      as a pile of orphans in any graph view.
   6. Uncommitted work — files git has not recorded yet (only if the workspace is
      a git repository). A finished file that was never committed is not backed
-     up, and no single session's close will ever notice it. This is the check
+     up, and later session closes may keep stepping around it. This is the check
      that catches work that ended without an ending.
 
 Deliberately excluded from the orphan checks: `reports/` (disposable views),
@@ -42,6 +42,9 @@ NO_INBOUND_EXEMPT_DIRS = ("reports", "log")
 NO_INBOUND_EXEMPT_FILES = {"README.md", "now.md", "tasks.md", "tasks-done.md",
                            "task-source.md", "connections.md", "cos-workspace.yaml"}
 TODAY = datetime.date.today()
+WORKSPACE_PATH = re.compile(
+    r'''^\s*workspace_path\s*:\s*(?:"([^"]*)"|'([^']*)'|([^#]*?))\s*(?:#.*)?$'''
+)
 
 
 def find_workspace(explicit):
@@ -49,10 +52,15 @@ def find_workspace(explicit):
         return os.path.abspath(os.path.expanduser(explicit))
     cfg = os.path.join(PRODUCT, "cos-os.yaml")
     if os.path.exists(cfg):
-        for line in open(cfg, encoding="utf-8"):
-            m = re.match(r'\s*workspace_path:\s*["\']?([^"\'#]+)', line)
-            if m:
-                return os.path.abspath(os.path.expanduser(m.group(1).strip()))
+        with open(cfg, encoding="utf-8") as config:
+            for line in config:
+                m = WORKSPACE_PATH.match(line)
+                if m:
+                    value = next(group for group in m.groups() if group is not None)
+                    value = value.strip()
+                    if value:
+                        return os.path.abspath(os.path.expanduser(value))
+                    break
     inside = os.path.join(PRODUCT, "workspace")
     if os.path.isdir(inside):
         return inside
@@ -73,7 +81,9 @@ def main():
     nested = []
     for dirpath, dirnames, filenames in os.walk(root):
         rel_dir = os.path.relpath(dirpath, root)
-        if rel_dir != "." and ".git" in dirnames:
+        # A nested checkout may carry .git as a directory or as a file (for
+        # example, a worktree or submodule). Both create the same tree boundary.
+        if rel_dir != "." and (".git" in dirnames or ".git" in filenames):
             nested.append(rel_dir)
         dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
         for f in filenames:

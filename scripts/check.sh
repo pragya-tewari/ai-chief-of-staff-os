@@ -19,6 +19,13 @@ else
   fail "shell syntax error"
 fi
 
+section "workspace health-check smoke test"
+if python3 scripts/health-check.py --workspace setup/workspace-template --strict; then
+  ok "fresh workspace template is clean"
+else
+  fail "workspace health check failed on the fresh template"
+fi
+
 section "no symlinks in the public tree"
 SYMLINKS="$(find . \( -path './.git' -o -path './workspace' \) -prune -o -type l -print)"
 if [[ -n "$SYMLINKS" ]]; then

@@ -136,6 +136,11 @@ fi
 mkdir -p "$WS"
 cp -R "$PRODUCT_DIR/setup/workspace-template/." "$WS/"
 cp "$PRODUCT_DIR/rules/about-me.template.md" "$WS/profile/about-me.md"
+# The profile file does not exist in the source workspace template, so add its
+# navigable link only after installation creates it. This keeps both trees clean.
+tmp="$(mktemp)"
+sed 's#^- `about-me.md`#- [`about-me.md`](about-me.md)#' "$WS/profile/README.md" > "$tmp"
+mv "$tmp" "$WS/profile/README.md"
 echo "Created workspace at $WS"
 
 # Stamp the workspace-owned version file.
