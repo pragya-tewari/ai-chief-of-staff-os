@@ -60,6 +60,16 @@ A one-pass summary loses things quietly. The diff is what stops that.
 - Evidence and views are allowed to repeat a fact. Current state is not: it
   lives in exactly one place, and everything else links to it.
 
+## Reconcile progress against existing work
+
+New evidence must update affected old work, not merely produce another list. During extraction and session close, search the relevant existing tasks, questions and project state for each completed artifact, dependency change or decision. Read the selected live task source; never use an inactive task list as current evidence. If a needed connection is unavailable, name the unverified scope and continue the local work that does not depend on it.
+
+For each affected item, record one disposition: **closed with evidence**, **changed or superseded**, **still open**, or **needs verification**. A decision, historical event or reference note is not an unfinished task merely because it has a checkbox. Retain the original evidence and link the current successor; do not erase the history. Apply the existing write plan, approval gates and receipt checkpoints to status changes too.
+
+Match the evidence to the task's scope. Requirements, design, implementation, QA, acceptance, approval and publication can finish at different times. A completed work-log entry does not complete a feature; a completed child does not complete its parent. An elapsed deadline is not completion evidence. Record the source and the scope it proves; distinguish explicit user confirmation from inference. Conflicting sources remain visible until resolved under the existing conflict rule.
+
+Reconcile related project and current-week summaries so they no longer repeat a resolved blocker. Keep tasks in their single live source; person/project views link to them. End with **Closed / Changed / Still open / Needs verification**, including evidence links and pending approvals. The report belongs in the existing run output or handoff, not a new parallel task ledger. This is agent behaviour, not a background sync or a capability of the mechanical health checker.
+
 ## Say what you are unsure about
 
 Mark facts as `confirmed`, `inferred` or `unconfirmed`. Never quietly turn an
@@ -121,23 +131,24 @@ uncommitted, and every later session correctly treats them as "not mine to
 touch". The original filing step was missed, and later sessions avoid changing
 work they do not own.
 
-An ending has three moves, in this order, and takes a few minutes:
+An ending has four moves, in this order, and takes a few minutes:
 
-1. **Link.** Everything durable you created this session is reachable from its
+1. **Reconcile.** Apply [progress reconciliation](#reconcile-progress-against-existing-work) to this session’s completed work and new evidence. Update the original affected items through the normal plan, gate and receipt; surface unresolved conflicts.
+2. **Link.** Everything durable you created this session is reachable from its
    folder README (the same-session filing rule above). Assets count — images,
    exports, generated files — not just notes.
-2. **Record.** If the workspace has its own Git repository, review and commit
+3. **Record.** If the workspace has its own Git repository, review and commit
    only this session's intended changes. Do not sweep unrelated or sensitive
    files into the commit. A commit provides local history, not an off-device
    backup; pushing requires the user's configured private destination and
    approval. If something must stay uncommitted, record which files, why and
    who owns the next step in the handoff.
-3. **Hand off.** Say plainly what changed, what is still open, and what the
+4. **Hand off.** Say plainly what changed, what is still open, and what the
    next session should pick up first. The learning report in
    [how-you-learn.md](how-you-learn.md#reporting-the-learning) is part of this.
 
 A deliverable shipped elsewhere is not an ending. If a session cannot do the
-three moves (interrupted, out of time), it says so — an honest "not closed" is
+four moves (interrupted, out of time), it says so — an honest "not closed" is
 recoverable; a silent stop is not.
 
 The safety net for sessions that stop anyway is [review-the-system](../jobs/review-the-system/),

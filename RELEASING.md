@@ -14,6 +14,7 @@ Run the same checks CI runs, plus the human ones:
 - [ ] The sample company runs: the `meeting-to-tasks` demo produces what
       `example-company/EXPECTED-STATE.md` says, and the injection line is quoted,
       not obeyed.
+- [ ] The [completion and coverage scenarios](jobs/meeting-to-tasks/test.md#completion-and-coverage-regression-scenarios) are exercised when changing extraction or reconciliation behaviour; report semantic results separately from script checks.
 - [ ] Rerun recovery is exercised: a succeeded action is not repeated, a failed
       local action resumes alone, and an external action left `in-progress`
       becomes `needs-verification` rather than being sent/created again.

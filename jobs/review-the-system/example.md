@@ -44,3 +44,7 @@ Using the sample company, end of a week.
 
 Nothing this week — the one candidate rule isn't ripe. If it repeats once more,
 it'll be proposed as an override.
+
+## Additional review boundary
+
+Alongside the mechanical counts, inspect recent extraction coverage and later completion evidence against affected tasks. A passed deadline alone is not a missed closure. In the shipped sample, T20's finished-module count is unanswered, so it must not be closed. Describe status-reconciliation findings separately from the health-check output; do not label a semantic check passed merely because the script passed.

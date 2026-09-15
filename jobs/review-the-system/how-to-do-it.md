@@ -42,10 +42,11 @@ same standing rule or candidate twice.
    - Work that ended without an ending: anything the check lists as
      uncommitted or unlinked that no session is still working on (see
      [Ending a session](../../rules/how-to-work.md#ending-a-session)).
-3. **Catch missed learning.** Any explicit correction in the logs that wasn't
+3. **Check status reconciliation.** Compare relevant recent meeting notes, completed session outputs and receipts against affected open items in the selected task source. Look for finished stages still listed as waiting, expired plans presented as current, duplicate actions, references presented as tasks, and task/project or parent/child conflicts. Inspect exact scope and evidence; age alone never establishes completion. Check that recent extraction checklists have actual destination coverage, including discussion and parked items. Report missed closures or filing gaps with the original item, evidence and proposed correction; this review job does not gain task-write or archive authority. Do not create a second task ledger. The Python health checker cannot determine these semantic facts, and an unavailable task connection makes that portion unverified.
+4. **Catch missed learning.** Any explicit correction in the logs that wasn't
    promoted gets the promotion rule applied — a standing instruction promotes now,
    a preference needs its third repeat.
-4. **Spot the "done three times" pattern.** If the same ad-hoc thing was done
+5. **Spot the "done three times" pattern.** If the same ad-hoc thing was done
    three times, draft a playbook for it (a candidate new job or override).
-5. **Write the review to `reports/`.** Any rule change is proposed to
+6. **Write the review to `reports/`.** Any rule change is proposed to
    `profile/overrides.md` and needs a yes.

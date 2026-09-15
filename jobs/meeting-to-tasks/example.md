@@ -95,6 +95,12 @@ dropped:
 - The observation about the vendor PM → `private/`.
 - Nothing goes to the vendor or the team — no message is sent.
 
+### 7a. Coverage verified separately from extraction
+
+The meeting note also maps its checklist items to the destinations above. T20/T23/T24 are **Act/Waiting**, Q8 is **Discuss**, U4 preserves the unanswered factual question, and the known rollout risk is **Context only** with its existing project reference. The proposed decision and private write remain approval-pending; the shared coverage table does not repeat private observations. Each row records the source item, owner/counterpart where stated, next step, timing, destination and disposition. Missing routing is not concealed by a complete narrative.
+
+The reverse completion check finds no evidence that T20's modules or T23's written message are complete. T20's deadline changes; neither task is closed. The run's handoff therefore says **Closed: none; Changed: T20 and stale project/week summaries; Still open: delivery, written notice and fallback; Needs verification: finished-module count and overdue notice**, alongside the pending approvals.
+
 ### 8. Run receipt (checkpointed at `log/runs/meeting-to-tasks--transcript-3-vendor-escalation.md`)
 
 ```

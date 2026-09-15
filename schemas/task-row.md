@@ -32,6 +32,12 @@ The built-in task list, `workspace/tasks.md`, is one table. Every row has these
 - **A task lives in one place only.** "What does Ravi owe me" is a filter of this
   table written to `reports/`, never a copy kept on Ravi's person file.
 
+## Completion evidence and scope
+
+These nine fields do not change. Preserve the original `from` value; put the later completion/cancellation source, verified date and scope in the existing meeting note or run receipt, identifying the task ID. `done` means the task's stated outcome is evidenced, not merely that a related stage finished. `cancelled` means the task is explicitly withdrawn or superseded, not simply overdue. Record the successor where one exists. A parked idea is not automatically a cancelled task.
+
+Keep requirements, implementation, testing and publication distinct when the work already uses those stages. Reuse an existing stage task rather than duplicate it. Parent/child or task/prose disagreements need verification. Moving closed rows to `tasks-done.md` still follows the existing approval rules for moves/archiving; if that approval is pending, retain the row in place and record the pending archive action. Status verification does not authorize an external task update.
+
 ## Using an external task tool instead
 
 These nine fields are the *shape* of a task, but an external tool needs a few

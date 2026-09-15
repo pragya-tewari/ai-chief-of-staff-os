@@ -31,3 +31,7 @@
 - Editing a rule or override without a yes.
 - Promoting a preference that's only been seen once or twice.
 - Reporting project status instead of system health.
+
+## Status-reconciliation acceptance
+
+In an isolated fixture, leave an implementation task open after a later note explicitly confirms delivery, while a separate acceptance task is still open. The review must identify the missed implementation closure without closing acceptance. Add an expired meeting deadline with no outcome evidence and a conflicting parent/child status: both need verification, not automatic completion. A checklist item mentioned only in narrative must be flagged as lacking an operational destination. The review reports proposed corrections and evidence, makes no task changes, and does not claim the mechanical checker detected these facts. With the task connection unavailable, it states that the live-status check is incomplete.

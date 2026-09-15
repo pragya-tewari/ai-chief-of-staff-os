@@ -56,13 +56,25 @@ settled or just floated, the decision authority, and the effective date. If a
 later meeting seems to reverse an earlier decision, surface it as a question —
 don't silently rewrite the record.
 
+Before routing new work, also run the reverse check in [progress reconciliation](../../rules/how-to-work.md#reconcile-progress-against-existing-work): which existing open items does this evidence close, change or supersede? Check the exact task or stage, preserve its ID and origin, and include the status change and evidence in the same write plan. Do not infer full completion from a finished implementation stage or a work-log task.
+
 ## 8. Route
 
 Follow [where-things-go.md](where-things-go.md) to classify every output. All
 writes wait for the gate; after it, the free and the approved writes execute
 together under the run receipt.
 
-## 9. Receipt and register
+## 9. Verify follow-up coverage
+
+Diff the complete extraction checklist against the actual destinations after the approved writes. For a dry-run, check planned destinations and label coverage as planned, not verified. Include promises, suggestions, dependencies, risks needing action, proactive discussion points and parked ideas; a mention in a project narrative alone is not an actionable follow-up.
+
+Keep a compact table in the meeting note: checklist item(s), classification, explicit owner or proposed counterpart, next step, stated date or trigger, destination link/ID, and disposition. Classifications are **Act / Discuss / Waiting / Decided / Parked / Context only**; they describe the extraction, not new task statuses. Related checklist items may share a row, but every item needs a disposition. Context-only material has an explicit reason for no action; uncertain meaning goes to the uncertainty register. Sensitive material remains subject to the private-data boundary and is not copied into this shared table.
+
+Search for an existing home before creating anything. Discussion questions go to the questions register; actionable commitments go to the selected task source; decisions retain their approval gate. Parked ideas name a re-entry trigger if one was stated, otherwise say none was agreed. Do not invent an owner, deadline or approved build to make the table look complete. Use linked project/person views instead of a second task list. Arrange generated views by project or topic, with completed history separate, not by extraction batch.
+
+Read the actual destination entries, not just their filenames. Confirm that the next step, counterpart and dependency survived. A pending approval, missing tool or unresolved write remains pending in the receipt; record the limitation rather than certifying full routing. An open task can be fully routed without being completed.
+
+## 10. Receipt and register
 
 The receipt at `log/runs/<run-key>.md` was created before step 8's first real
 write and checkpointed after each action. Now update the meeting register row in

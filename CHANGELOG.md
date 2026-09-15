@@ -11,6 +11,19 @@ it.
 
 - Nothing yet.
 
+## [0.1.2] — 2026-09-15
+
+No workspace format changes; spec version remains 0.1. Existing workspaces do not need reinstallation or new columns. On the next extraction or session close, reconcile the affected existing items; use the next system review to identify older gaps. Do not bulk-close old tasks or reprocess completed meetings automatically.
+
+### Fixed
+- Meeting extraction now verifies checklist-to-destination coverage, including discussions, dependencies and parked ideas. A complete summary no longer counts as proof of complete routing.
+- New evidence and completed session work must reconcile affected existing open items. Closure records name the evidence and exact scope; implementation, acceptance and publication remain distinct.
+- Session endings now reconcile before linking, recording and handing off. Outputs show Closed / Changed / Still open / Needs verification.
+- System review checks for missed closures, superseded plans, duplicate actions and conflicting status evidence, separately from mechanical health checks.
+- Task guidance preserves the existing schema and source references, approval gates and single live task source. Added fictional semantic regression scenarios and clarified rerun behaviour.
+
+These are agent workflow instructions, not background automation or semantic capabilities of the Python health checker.
+
 ## [0.1.1] — 2026-09-14
 
 No workspace changes; nothing to migrate.
